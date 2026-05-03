@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --saffron: #FF9933;
+  --saffron-light: #FFE9D5;
+  --saffron-dark: #8B5A00;
+  --green: #138808;
+  --green-light: #D4F1E4;
+  --green-dark: #0A5C1C;
+  --blue: #003478;
+  --blue-light: #D4E4FF;
+  --blue-dark: #001F47;
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-600: #4B5563;
+  --gray-800: #1F2937;
+  --gray-900: #111827;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --info: #3B82F6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--gray-800);
+  background: radial-gradient(circle at 10% 20%, rgba(255, 153, 51, 0.08), transparent 35%),
+              radial-gradient(circle at 90% 80%, rgba(19, 136, 8, 0.08), transparent 35%),
+              radial-gradient(circle at 50% 50%, rgba(0, 52, 120, 0.05), transparent 40%),
+              #fafafa;
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark body {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: #e0e0e0;
+}
+
+h1, h2 {
+  font-family: 'Outfit', sans-serif;
+}
+
+h1 { font-size: 2.25rem; font-weight: 800; }
+h2 { font-size: 1.875rem; font-weight: 700; }
+h3 { font-size: 1.5rem; font-weight: 700; }
+
+@layer components {
+  .card {
+    @apply rounded-xl border-2 border-saffron-200 bg-white shadow-lg backdrop-blur-sm;
+  }
+  .card-primary {
+    @apply bg-gradient-to-br from-saffron-50 to-saffron-100;
+  }
+  .card-success {
+    @apply bg-gradient-to-br from-indianGreen-50 to-indianGreen-100;
+  }
+  .btn {
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer;
+  }
+  .btn-primary {
+    @apply bg-saffron-500 text-white hover:bg-saffron-600 focus:ring-saffron-500 shadow-md hover:shadow-lg;
+  }
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400;
+  }
+  .btn-success {
+    @apply bg-indianGreen-500 text-white hover:bg-indianGreen-600 focus:ring-indianGreen-500 shadow-md hover:shadow-lg;
+  }
+  .progress-bar {
+    @apply h-3 bg-gray-200 rounded-full overflow-hidden;
+  }
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-saffron-500 via-indianGreen-500 to-indianBlue-500 transition-all duration-700 ease-out rounded-full;
+  }
+  .step-container {
+    @apply min-h-screen flex flex-col items-center justify-start px-4 py-8 md:py-12;
+  }
+  .ai-response-box {
+    @apply bg-gradient-to-r from-indianBlue-50 to-saffron-50 border-l-4 border-indianBlue-500 rounded-lg p-4 my-4;
+  }
+  .glass-card {
+    @apply bg-white/50 backdrop-blur-xl border border-white/60 rounded-3xl shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] transition-all duration-300;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #FF9933, #138808);
+  border-radius: 10px;
+}
+
+/* Confetti animation particles */
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confetti-fall 3s ease-out forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(400px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Typing dots animation */
+.typing-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #FF9933;
+  margin: 0 3px;
+  animation: typing-bounce 1.4s infinite ease-in-out both;
+}
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+.typing-dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes typing-bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1.0); }
+}
+
+/* Staggered fade-in utility */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
